@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Fragment, useContext } from 'react';
+import { useContext } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import ProfilePage from './pages/ProfilePage';
 import ActivitiesPage from './pages/ActivitiesPage';
@@ -8,6 +8,7 @@ import Layout from './components/Layout/Layout';
 import LoginPage from './pages/LoginPage';
 import StravaRedirectPage from './pages/StravaRedirectPage';
 import { AuthContext } from './store/auth-context';
+import ActivityDetails from './components/Activity/ActivityDetails/ActivityDetails';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -34,7 +35,7 @@ function App() {
         }
         {isLoggedIn &&
           <Route path='/activities/:id'>
-
+            <ActivityDetails></ActivityDetails>
           </Route>
         }
         <Route path="/redirect">

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { AuthContext } from '../../store/auth-context';
 
 import classes from './MainNavigation.module.css';
@@ -18,8 +18,8 @@ const MainNavigation = () => {
     };
 
     return (
-        <header>
-            <Navbar bg="primary" variant="dark">
+        <header className='shadow-sm'>
+            <Navbar className='shadow-sm' bg="primary" variant="dark">
                 <Container>
                     <Navbar.Brand to='/'>Strava dashboard</Navbar.Brand>
                     <Nav className="me-auto" >

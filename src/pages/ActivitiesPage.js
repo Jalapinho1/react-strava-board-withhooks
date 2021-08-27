@@ -1,4 +1,3 @@
-import { Fragment, useEffect } from "react";
 import Activities from "../components/Activity/Activities";
 
 const ActivitiesPage = () => {

@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Fragment, useContext, useEffect, useState } from "react";
+import { Card, Col, Container, Placeholder, Row, Spinner } from "react-bootstrap";
 import { AuthContext } from "../../store/auth-context";
+import ActivityCard from "./ActivityCard";
 
 const Activities = () => {
     const [activities, setActivities] = useState([]);
@@ -21,16 +22,56 @@ const Activities = () => {
         });
     }, [authCtx.userId, authCtx.token]);
 
-    let content = <div className='mx-auto text-center'>
-        <p>Welcome to Activities Page!</p>
-        <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner>
-    </div>;
+    let content = <Fragment>
+        <Col xl={4}>
+            <Card className='shadow p-3'>
+                <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+                <Placeholder.Button variant="primary" xs={6} />
+            </Card>
+        </Col>
+        <Col xl={4}>
+            <Card className='shadow p-3'>
+                <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+                <Placeholder.Button variant="primary" xs={6} />
+            </Card>
+        </Col>
+        <Col xl={4}>
+            <Card className='shadow p-3'>
+                <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+                <Placeholder.Button variant="primary" xs={6} />
+            </Card>
+        </Col>
+    </Fragment>;
+
+    if (activities !== undefined && activities.length > 0) {
+        content = activities.map(activ => {
+            return (
+                <Col xl={4} key={activ.id}>
+                    <ActivityCard {...activ}></ActivityCard>
+                </Col>
+            );
+        })
+    }
 
     return (
         <Container className="mt-4">
-            {content}
+            <Row>
+                <Col>
+                    <p>Welcome to Activities Page!</p>
+                </Col>
+            </Row>
+            <Row>
+                {content}
+            </Row>
         </Container>
     );
 }

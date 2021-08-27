@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Profile from "../components/Profile/Profile";
 
 const ProfilePage = () => {

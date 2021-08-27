@@ -2,9 +2,7 @@ import { useContext, useEffect } from "react";
 import _ from "lodash";
 
 import {
-    cleanUpAuthToken,
-    testAuthGetter,
-    getUserData,
+    cleanUpAuthToken
 } from "../utils/functions";
 import { useHistory, useLocation } from "react-router";
 import { AuthContext } from "../store/auth-context";
@@ -31,11 +29,6 @@ const StravaRedirectPage = () => {
                 const stravaAuthToken = cleanUpAuthToken(location.search);
 
                 // Post Request to Strava (with AuthToken) which returns Refresh Token and and Access Token
-                // const tokens = await testAuthGetter(stravaAuthToken);
-                // this.props.setUser(tokens);
-                // const accessToken = tokens.access_token;
-                // const userID = tokens.athlete.id;
-
                 fetch(
                     `https://www.strava.com/oauth/token?client_id=${REACT_APP_CLIENT_ID}&client_secret=${REACT_APP_CLIENT_SECRET}&code=${stravaAuthToken}&grant_type=authorization_code`,
                     {
@@ -55,11 +48,7 @@ const StravaRedirectPage = () => {
                     console.log('Error!');
                 });
 
-                // Axios request to get users info
-                // const user = await getUserData(userID, accessToken);
-                // this.props.setUserActivities(user);
-
-                // Once complete, go to display page
+                // Once complete, go to user profile page
                 history.push("/profile");
             } catch (error) {
                 history.push("/");
