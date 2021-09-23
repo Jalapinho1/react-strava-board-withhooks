@@ -1,8 +1,10 @@
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { MdDirectionsBike, MdDirectionsRun } from "react-icons/md";
-import { FaDumbbell, FaMountain, FaSwimmer } from "react-icons/fa";
+import { FaDumbbell, FaMountain, FaRoad, FaSwimmer } from "react-icons/fa";
 import { FiActivity } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { metresToKm, toTimeString } from "../../utils/functions";
+import { BiTimer } from "react-icons/bi";
 
 const ActivityCard = (props) => {
     let icon;
@@ -28,13 +30,44 @@ const ActivityCard = (props) => {
 
     return (
         <Card className='text-center mb-3 shadow-sm'>
-            <p className='mt-2'>
+            <p className='my-1'>
                 <span className='fw-bold'>{props.name} </span>
                 <span>({formattedDate})</span>
             </p>
-            {icon}
+            <div className="pb-2">
+                {icon}
+            </div>
+            <div className="bg-light py-1">
+                <Row >
+                    <Col>
+                        <span className='fw-bold'>
+                            Distance
+                        </span>
+                    </Col>
+                    <Col>
+                        <span className='fw-bold'>
+                            Moving Time
+                        </span>
+                    </Col>
+                    <Col>
+                        <span className='fw-bold'>
+                            Elevation
+                        </span>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col><FaRoad></FaRoad></Col>
+                    <Col><BiTimer size="1.5em"></BiTimer></Col>
+                    <Col><FaMountain></FaMountain></Col>
+                </Row>
+                <Row>
+                    <Col>{metresToKm(props.distance)}km</Col>
+                    <Col>{toTimeString(props.moving_time)}</Col>
+                    <Col>{props.total_elevation_gain}m</Col>
+                </Row>
+            </div>
             <Link
-                className='btn btn-primary btn-sm px-3 my-3 mx-auto'
+                className='btn btn-primary btn-sm px-3 my-2 mx-auto'
                 to={`/activities/${props.id}`}>
                 Open Details
             </Link>

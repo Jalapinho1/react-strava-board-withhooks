@@ -1,9 +1,9 @@
 .map {
-    height: 400px;
+    height: 450px;
 }
 
 .mapParent {
     width: 100%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
 }

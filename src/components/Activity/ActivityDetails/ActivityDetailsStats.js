@@ -3,11 +3,12 @@ import { Col, Row, Table } from "react-bootstrap";
 import { toTimeString, metresToKm, convertToKMH } from '../../../utils/functions';
 import { FaRoad, FaMountain } from "react-icons/fa";
 import { BiTimer } from 'react-icons/bi';
+import classes from './ActivityDetailsStats.module.css';
 
 const ActivityDetailsStats = (props) => {
     return (
         <Fragment>
-            <div className="bg-light my-3 py-2">
+            <div className="bg-light my-1 py-2">
                 <Row >
                     <Col>
                         <span className='fw-bold'>
@@ -36,7 +37,7 @@ const ActivityDetailsStats = (props) => {
                     <Col>{props.total_elevation_gain}m</Col>
                 </Row>
             </div>
-            <Row>
+            <Row className={`mb-3 ` + classes.statsFont}>
                 <Col xs={12}>
                     <Row>
                         <Table responsive="sm">
@@ -92,8 +93,7 @@ const ActivityDetailsStats = (props) => {
                 </Col>
 
             </Row>
-            <hr></hr>
-            <Row>
+            <Row className={classes.statsFont}>
                 <Col xs={6} className='text-start'>
                     <span>
                         {props.device_name}
