@@ -4,8 +4,11 @@ import { Card, Container, Spinner } from "react-bootstrap";
 import Placeholder from 'react-bootstrap/Placeholder';
 import { useParams } from "react-router";
 import { AuthContext } from "../../../store/auth-context";
+import L from "leaflet";
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import "leaflet.fullscreen/Control.FullScreen";
+import "leaflet.fullscreen/Control.FullScreen.css";
 
 import { MdDirectionsBike, MdDirectionsRun } from "react-icons/md";
 import { FaDumbbell, FaMountain, FaSwimmer } from "react-icons/fa";
@@ -63,13 +66,25 @@ const ActivityDetails = () => {
 
     let icon;
     let map;
+    const fullscreenControl = L.control.fullscreen({
+        position: 'topright', // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
+        title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+        titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
+        content: null, // change the content of the button, can be HTML, default null
+        forceSeparateButton: true, // force separate button to detach from zoom buttons, default false
+        forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
+        fullscreenElement: false // Dom element to render in full screen, false by default, fallback to map._container
+    })
+
     if (activityDetails) {
         if (activityDetails.map) {
-            const startCoord = activityDetails.start_latlng;
             map = <MapContainer
                 className={classes.map}
                 center={[activityDetails.start_latlng[0], activityDetails.start_latlng[1]]}
-                zoom={14}
+                zoom={13}
+                whenCreated={map => {
+                    fullscreenControl.addTo(map)
+                }}
                 scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
