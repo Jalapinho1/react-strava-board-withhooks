@@ -3,7 +3,8 @@ import stravaLogo from '../../assets/stravalogo.png';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
-    const redirectUrl = "http://localhost:3000/redirect";
+    // const redirectUrl = "http://localhost:3000/redirect";
+    const redirectUrl = "https://react-strava-board.herokuapp.com/redirect";
     const scope = "read,activity:read"
 
     const onConnectHandler = () => {
