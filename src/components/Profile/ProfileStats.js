@@ -5,6 +5,7 @@ import runPic2 from '../../assets/stats_run2.jpg';
 import bikePic from '../../assets/stats_bike1.jpg';
 import bikePic2 from '../../assets/stats_bike6.jpg';
 import bikePic3 from '../../assets/stats_bike5.jpg';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ProfileStats = (props) => {
     let { all_ride_totals, all_run_totals, biggest_climb_elevation_gain, biggest_ride_distance,
@@ -25,7 +26,11 @@ const ProfileStats = (props) => {
             <Row>
                 <Col lg={4}>
                     <Card className="mb-3">
-                        <Card.Img variant="top" src={bikePic2} />
+                        <LazyLoadImage
+                            className="card-img-top w-100"
+                            effect="blur"
+                            src={bikePic2}
+                        />
                         <Card.Body className='text-start'>
                             <Card.Title className='text-center'>Current year cycling</Card.Title>
                             <Row>
@@ -49,7 +54,11 @@ const ProfileStats = (props) => {
                 </Col>
                 <Col lg={4}>
                     <Card className="mb-3">
-                        <Card.Img variant="top" src={bikePic} />
+                        <LazyLoadImage
+                            className="card-img-top w-100"
+                            effect="blur"
+                            src={bikePic}
+                        />
                         <Card.Body className='text-start'>
                             <Card.Title className='text-center'>All time cycling</Card.Title>
                             <Row>
@@ -74,7 +83,11 @@ const ProfileStats = (props) => {
 
                 <Col lg={4}>
                     <Card className="mb-2">
-                        <Card.Img variant="top" src={bikePic3} />
+                        <LazyLoadImage
+                            className="card-img-top w-100"
+                            effect="blur"
+                            src={bikePic3}
+                        />
                         <Card.Body className='text-start'>
                             <Card.Title className='text-center'>Cycling all time best</Card.Title>
                             <Row>
@@ -90,7 +103,11 @@ const ProfileStats = (props) => {
                 </Col>
                 <Col lg={4}>
                     <Card className="mb-2">
-                        <Card.Img variant="top" src={runPic2} />
+                        <LazyLoadImage
+                            className="card-img-top w-100"
+                            effect="blur"
+                            src={runPic2}
+                        />
                         <Card.Body className='text-start'>
                             <Card.Title className='text-center'>Current year running</Card.Title>
                             <Row>
@@ -110,7 +127,11 @@ const ProfileStats = (props) => {
                 </Col>
                 <Col lg={4}>
                     <Card className="mb-2">
-                        <Card.Img variant="top" src={runPic} />
+                        <LazyLoadImage
+                            className="card-img-top w-100"
+                            effect="blur"
+                            src={runPic}
+                        />
                         <Card.Body className='text-start'>
                             <Card.Title className='text-center'>All time running</Card.Title>
                             <Row>

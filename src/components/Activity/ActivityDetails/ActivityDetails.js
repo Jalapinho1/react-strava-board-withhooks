@@ -59,7 +59,6 @@ const ActivityDetails = () => {
                 <Placeholder as={Card.Text} animation="glow">
                     <Placeholder xs={11} size='lg' />
                     <Placeholder xs={5} /> <Placeholder xs={6} />
-
                 </Placeholder>
             </Card.Body>
         </Fragment>;

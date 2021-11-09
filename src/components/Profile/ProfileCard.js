@@ -1,4 +1,5 @@
 import { Card, Col, Image, Row } from "react-bootstrap";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import profileTitlePic from '../../assets/profile-background2.jpg';
 import classes from './ProfileCard.module.css';
@@ -11,7 +12,12 @@ const ProfileCard = (props) => {
         <Card className='shadow-sm'>
             <Card.Header className={`p-0 ${classes.profile_header}`}>
                 <div>
-                    <Image className={classes.img_title} src={profileTitlePic}></Image>
+                    <LazyLoadImage
+                        className={classes.img_title}
+                        alt="Title pic"
+                        effect="blur"
+                        src={profileTitlePic}
+                    />
                 </div>
                 <div>
                     <Image className={classes.img_profile} src={profile} roundedCircle />
